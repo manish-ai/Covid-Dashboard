@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import Details from './Details';
+import Statewise from './Statewise';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import Navbar from './Navbar';
+import Scroll from './Scroll'
+import District from './Districtwise';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+
+      <Switch>
+        <Route path="/details" component={Details} />
+        <Redirect from="/" exact to="/details" />
+        <Route path="/statewise" component={Statewise} />
+        <Route path="/districtwise" component={District} />
+      </Switch>
+      <Scroll></Scroll>
     </div>
+
   );
 }
 
