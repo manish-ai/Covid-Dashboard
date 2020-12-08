@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 
 import styled from 'styled-components';
@@ -12,9 +12,9 @@ export default class Navbar1 extends Component {
                     <Navbar.Brand href="/details"><h2>Covid19-Dash</h2></Navbar.Brand>
                     <Nav className="mr-auto">
                     </Nav>
-                    <Navbar.Brand href="/" className="border-light"> Home</Navbar.Brand>
-                    <Navbar.Brand href="/statewise"> State-wise</Navbar.Brand>
-                    <Navbar.Brand href="/district"> Karnataka District-wise</Navbar.Brand>
+                    <Link to="/"> <Navbar.Brand className="border-light"> Home</Navbar.Brand></Link>
+                    <Link to="/statewise">   <Navbar.Brand  > State-wise</Navbar.Brand></Link>
+                    <Link to="/districtwise">  <Navbar.Brand > Karnataka District-wise</Navbar.Brand></Link>
 
                 </Navbar>
             </nav>

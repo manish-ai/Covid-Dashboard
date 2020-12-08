@@ -11,6 +11,11 @@ body{
   padding-bottom: 0.8vw;
 }
 
+.tables{
+  height: 600px !important;
+  overflow-y: auto;
+}
+
 .NewCases,
 .TotalRecovered,
 .TotalDeaths,
@@ -38,5 +43,5 @@ body{
   color: rgb(255, 0, 0);
 }
 .NewCases{
-  color: orange;
+  color: #ffeaaf;
 }

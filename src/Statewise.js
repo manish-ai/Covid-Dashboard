@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { axios } from 'axios';
-import $ from 'jquery';
 import styled from 'styled-components';
 import { MDBTable } from 'mdbreact';
 
@@ -56,7 +54,7 @@ export default class Statewise extends Component {
                         error
                     });
                 }
-         )
+            )
 
 
     }
@@ -67,6 +65,9 @@ export default class Statewise extends Component {
         return (
             <Wraper>
                 <div>
+                    <div className="justify-content-center d-flex mt-2 mb-1">
+                        <h2>State Wise Data Of India</h2>
+                    </div>
 
                     <div >
                         <MDBTable fixed bordered>

@@ -1,0 +1,35 @@
+const districts = {
+    district: [
+        "Bagalkote",
+        "Ballari",
+        "Belagavi",
+        "Bengaluru Rural",
+        "Bengaluru Urban",
+        "Bidar",
+        "Chamarajanagara",
+        "Chikballapura",
+        "Chikkamagaluru",
+        "Chitradurga",
+        "Dakshina Kannada",
+        "Davangere",
+        "Dharwad",
+        "Gadag",
+        "Hassan",
+        "Haveri",
+        "Kalaburagi",
+        "Kodagu",
+        "Kolar",
+        "Koppal",
+        "Mandya",
+        "Mysuru",
+        "Raichur",
+        "Ramanagara",
+        "Shivamogga",
+        "Tumakuru",
+        "Udupi",
+        "Uttara Kannada",
+        "Vijayapura",
+        "Yadgir"
+    ]
+}
+export default districts;

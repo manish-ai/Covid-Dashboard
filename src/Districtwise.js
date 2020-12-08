@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { axios } from 'axios';
-import $ from 'jquery';
 import styled from 'styled-components';
 import { MDBTable } from 'mdbreact';
+import districts from './DistrictList';
+import { Dropdown } from 'react-bootstrap';
 
 
 export default class District extends Component {
@@ -16,6 +16,8 @@ export default class District extends Component {
         arrow: {
             fa: 'fa-arrow-up',
         },
+        dist: null,
+        distInfo: null
 
     }
     sortBy = (key) => {
@@ -45,10 +47,10 @@ export default class District extends Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        district: result.karnataka.district
+                        district: result.Karnataka.districtData
                     });
-                    console.log(result);
-                    console.log(this.state.district);
+                    // console.log(result.Karnataka.districtData);
+                    // console.log(this.state.district);
                 },
                 (error) => {
                     this.setState({
@@ -60,6 +62,10 @@ export default class District extends Component {
 
 
     }
+    getDistrict = (dist) => {
+        this.setState({ dist: dist, distInfo: this.state.district[dist] })
+
+    }
     render() {
 
 
@@ -69,10 +75,28 @@ export default class District extends Component {
                 <div>
 
                     <div >
+                        <div className="justify-content-center d-flex mt-2 mb-1">
+                            <h2>District Wise Data Of Karnataka, India</h2>
+                        </div>
+                        <div className="mt-2 mb-4 justify-content-center d-flex">
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    Select District
+  </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    {districts.district.map(dist => (
+
+                                        <Dropdown.Item id={dist} onClick={() => this.getDistrict(dist)}>{dist}</Dropdown.Item>
+                                    ))}
+
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
                         <MDBTable fixed bordered>
                             <thead >
                                 <tr>
-                                    <th>District    <span className="arrow " onClick={() => this.sortBy('state')}><i class="fas fa-sort"></i></span></th>
+                                    <th>District Name  <span className="arrow " onClick={() => this.sortBy('state')}><i class="fas fa-sort"></i></span></th>
 
                                     <th >Total Confirmed   <span className="arrow " onClick={() => this.sortBy('confirmed')}><i class="fas fa-sort"></i></span>
                                     </th>
@@ -80,25 +104,24 @@ export default class District extends Component {
                                     <th>Recovered    <span className="arrow " onClick={() => this.sortBy('recovered')}><i class="fas fa-sort"></i></span></th>
                                     <th>New Cases    <span className="arrow " onClick={() => this.sortBy('deltaconfirmed')}><i class="fas fa-sort"></i></span></th>
                                     <th>Deaths     <span className="arrow " onClick={() => this.sortBy('deaths')}><i class="fas fa-sort"></i></span></th>
-                                    <th>Time Updated</th>
+
                                 </tr>
                             </thead>
-                            <tbody className="tbod">
+                            <tbody className="tbod mt-2">
 
 
-                                {this.state.district.map(state => (
-                                    <tr key={state.state}>
-                                        <td >{state.state}</td>
 
-                                        <td>{state.confirmed}</td>
-                                        <td>{state.active}</td>
-                                        <td>{state.recovered}</td>
-                                        <td>{state.deltaconfirmed}</td>
-                                        <td>{state.deaths}</td> <td>{state.lastupdatedtime}</td>
+                                {this.state.dist ?
+                                    <tr >
+                                        <td >{this.state.dist}</td>
+
+                                        <td>{this.state.distInfo.confirmed}</td>
+                                        <td>{this.state.distInfo.active}</td>
+                                        <td>{this.state.distInfo.recovered}</td>
+                                        <td>{this.state.distInfo.delta.confirmed}</td>
+                                        <td>{this.state.distInfo.deceased}</td>
                                     </tr>
-
-
-                                ))}
+                                    : null}
 
                             </tbody>
                         </MDBTable>

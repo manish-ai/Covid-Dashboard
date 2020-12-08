@@ -12,7 +12,7 @@ function App() {
       <Navbar />
 
       <Switch>
-        <Route path="/details" component={Details} />
+        <Route path="/details" exact component={Details} />
         <Redirect from="/" exact to="/details" />
         <Route path="/statewise" component={Statewise} />
         <Route path="/districtwise" component={District} />

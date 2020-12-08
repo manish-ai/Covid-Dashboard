@@ -53,6 +53,9 @@ export default class Details extends Component {
                 <div>
                     <Summary summary={this.state.global} curDate={this.state.curDate} ></Summary>
                 </div>
+                <div className="justify-content-center d-flex ">
+                    <h2>Coronavirus Data Of the World</h2>
+                </div>
                 <MDBTable bordered>
                     <MDBTableHead>
 
