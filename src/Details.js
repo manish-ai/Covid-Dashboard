@@ -10,7 +10,13 @@ export default class Details extends Component {
     state = {
         countries: [],
         global: [],
-        curDate: null
+        curDate: null,
+        direction: {
+            price: 'asc',
+        },
+        arrow: {
+            fa: 'fa-arrow-up',
+        },
     }
 
 
@@ -39,6 +45,24 @@ export default class Details extends Component {
                 console.log(error)
             })
 
+        this.sortBy('TotalConfirmed')
+
+    }
+    sortBy = (key) => {
+        const countries = this.state.countries;
+        this.setState({
+            countries: countries.sort((a, b) => (
+                this.state.direction[key] === 'asc'
+                    ? parseFloat(a[key]) - parseFloat(b[key])
+                    : parseFloat(b[key]) - parseFloat(a[key])
+            )),
+            direction: {
+                [key]: this.state.direction[key] === 'asc'
+                    ? 'desc'
+                    : 'asc'
+            }
+        })
+
     }
 
 
@@ -54,24 +78,37 @@ export default class Details extends Component {
                     <Summary summary={this.state.global} curDate={this.state.curDate} ></Summary>
                 </div>
                 <div className="justify-content-center d-flex ">
-                    <h2>Coronavirus Data Of the World</h2>
+                    <h2> World Stats Of Coronavirus</h2>
                 </div>
                 <MDBTable bordered>
                     <MDBTableHead>
 
                         <tr>
                             <th>Country</th>
-                            <th>New Cases</th>
-                            <th>Total Cases</th>
-                            <th>Total Recovered</th>
-                            <th>Total Deaths</th>
-                            <th>Time Updated</th>
+                            <th>New Cases &nbsp;&nbsp;
+                            <span className="arrow " onClick={() => this.sortBy('NewConfirmed')}><i class="fas fa-sort"></i></span>
+                            </th>
+                            <th>Total Cases&nbsp;&nbsp;
+                            <span className="arrow " onClick={() => this.sortBy('TotalConfirmed')}><i class="fas fa-sort"></i></span>
+                            </th>
+                            <th>Total Recovered&nbsp;&nbsp;&nbsp;
+                            <span className="arrow " onClick={() => this.sortBy('TotalRecovered')}><i class="fas fa-sort"></i></span>
+                            </th>
+                            <th>Total Deaths&nbsp;&nbsp;&nbsp;
+                                 <span className="arrow " onClick={() => this.sortBy('TotalDeaths')}><i class="fas fa-sort"></i></span>
+                            </th>
+                            <th>Time &nbsp;&nbsp;
+                            <span className="arrow " onClick={() => this.sortBy('Date')}><i class="fas fa-sort"></i></span>
+
+                            </th>
                         </tr>
                     </MDBTableHead>
                     <MDBTableBody>
-                        {this.state.countries.map(country => (
+                        {this.state.countries ? this.state.countries.map(country => (
                             <Countries countries={country} key={country.Country} />
-                        ))}
+                        )) : <div className="justify-content-center d-flex ">
+                                <h4 className="text-center ml-5">No Data Available . Please Try Again</h4>
+                            </div>}
                     </MDBTableBody>
                 </MDBTable>
             </React.Fragment>

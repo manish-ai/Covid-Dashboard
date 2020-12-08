@@ -11,7 +11,7 @@ export default class Countries extends Component {
                 <td>{countries.TotalConfirmed}</td>
                 <td>{countries.TotalRecovered}</td>
                 <td>{countries.TotalDeaths}</td>
-                <td>{countries.Date}</td>
+                <td>{new Date(countries.Date).toLocaleTimeString()}</td>
             </tr>
         )
     }  //new Date(countries.Date).toTimeString()

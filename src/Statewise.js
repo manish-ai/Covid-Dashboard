@@ -30,8 +30,6 @@ export default class Statewise extends Component {
                     ? 'desc'
                     : 'asc'
             }
-
-
         })
 
     }
@@ -95,7 +93,7 @@ export default class Statewise extends Component {
                                         <td>{state.active}</td>
                                         <td>{state.recovered}</td>
                                         <td>{state.deltaconfirmed}</td>
-                                        <td>{state.deaths}</td> <td>{state.lastupdatedtime}</td>
+                                        <td>{state.deaths}</td> <td>{new Date(state.lastupdatedtime).toLocaleTimeString()}</td>
                                     </tr>
 
 

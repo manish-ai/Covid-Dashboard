@@ -7,17 +7,19 @@ import styled from 'styled-components';
 export default class Navbar1 extends Component {
     render() {
         return (
-            <nav>
-                <Navbar className="bg-success" variant="dark">
-                    <Navbar.Brand href="/details"><h2>Covid19-Dash</h2></Navbar.Brand>
-                    <Nav className="mr-auto">
-                    </Nav>
-                    <Link to="/"> <Navbar.Brand className="border-light"> Home</Navbar.Brand></Link>
-                    <Link to="/statewise">   <Navbar.Brand  > State-wise</Navbar.Brand></Link>
-                    <Link to="/districtwise">  <Navbar.Brand > Karnataka District-wise</Navbar.Brand></Link>
+            <NavWrapper>
+                <nav>
 
-                </Navbar>
-            </nav>
+                    <Navbar className="bg-success" variant="dark">
+                        <Navbar.Brand href="/details"><h2>Covid19-Dash</h2></Navbar.Brand>
+                        <Nav className="mr-auto">
+                        </Nav>
+                        <Link to="/"> <Navbar.Brand className="border-light"> Home</Navbar.Brand></Link>
+                        <Link to="/statewise">   <Navbar.Brand  > State-wise</Navbar.Brand></Link>
+                        <Link to="/districtwise">  <Navbar.Brand > Karnataka District-wise</Navbar.Brand></Link>
+
+                    </Navbar>
+                </nav></NavWrapper>
         )
     }
 }
