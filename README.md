@@ -1,4 +1,4 @@
-Coronavirus Dashboard
+Coronavirus Dashboard <br />
 It is a custom made dashboard <br />
 It Contains:<br />
  1)World Data - Country-wise<br />
